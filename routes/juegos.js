@@ -32,3 +32,14 @@ router.put('/:id', async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 });
+// Eliminar un juego
+router.delete('/:id', async (req, res) => {
+  try {
+    await Juego.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Juego eliminado' });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+module.exports = router;
